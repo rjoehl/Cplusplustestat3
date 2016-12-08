@@ -21,10 +21,22 @@ void indexableSet_subscript_operator_should_return_element_at_negative_index() {
 	ASSERT_EQUAL(4, values[-2]);
 }
 
+void indexableSet_subscript_operator_should_throw_when_index_out_of_range() {
+	indexableSet<int> const values{0, 1, 2, 3, 4, 5};
+	ASSERT_THROWS(values[15], std::out_of_range);
+}
+
+void indexableSet_subscript_operator_should_throw_when_negative_index_out_of_range() {
+	indexableSet<int> const values{0, 1, 2, 3, 4, 5};
+	ASSERT_THROWS(values[-15], std::out_of_range);
+}
+
 bool runAllTests(int argc, char const *argv[]) {
 	cute::suite s { };
 	s.push_back(CUTE(indexableSet_subscript_operator_should_return_element_at_index));
 	s.push_back(CUTE(indexableSet_subscript_operator_should_return_element_at_negative_index));
+	s.push_back(CUTE(indexableSet_subscript_operator_should_throw_when_index_out_of_range));
+	s.push_back(CUTE(indexableSet_subscript_operator_should_throw_when_negative_index_out_of_range));
 	//TODO add your test here
 	//s.push_back(CUTE(indexableSet_ctor_should_work_like_set));
 	cute::xml_file_opener xmlfile(argc, argv);
