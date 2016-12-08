@@ -14,9 +14,17 @@ void indexableSet_subscript_operator_should_return_element_at_index() {
 	ASSERT_EQUAL(3, values[3]);
 }
 
+void indexableSet_subscript_operator_should_return_element_at_negative_index() {
+	indexableSet<int> const cvalues{0, 1, 2, 3, 4, 5};
+	indexableSet<int> values{0, 1, 2, 3, 4, 5};
+	ASSERT_EQUAL(4, cvalues[-2]);
+	ASSERT_EQUAL(4, values[-2]);
+}
+
 bool runAllTests(int argc, char const *argv[]) {
 	cute::suite s { };
 	s.push_back(CUTE(indexableSet_subscript_operator_should_return_element_at_index));
+	s.push_back(CUTE(indexableSet_subscript_operator_should_return_element_at_negative_index));
 	//TODO add your test here
 	//s.push_back(CUTE(indexableSet_ctor_should_work_like_set));
 	cute::xml_file_opener xmlfile(argc, argv);

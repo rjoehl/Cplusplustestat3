@@ -11,18 +11,16 @@ class indexableSet : public std::set<T, COMPARE>
 	using Base = std::set<T, COMPARE>;
 public:
 	using Base::set;
-	using size_type = typename Base::size_type;
-	decltype(auto) operator[](size_type index) const {
-		auto it = Base::cbegin();
+	decltype(auto) operator[](int index) const {
+		auto it = index >= 0 ? Base::cbegin() : Base::cend();
 		std::advance(it, index);
 		return *it;
 	}
-
-	decltype(auto) operator[](size_type index) {
-			auto it = Base::begin();
-			std::advance(it, index);
-			return *it;
-		}
+	decltype(auto) operator[](int index) {
+		auto it = index >= 0 ? Base::begin() : Base::end();
+		std::advance(it, index);
+		return *it;
+	}
 
 };
 
