@@ -18,6 +18,12 @@ public:
 		return *it;
 	}
 
+	decltype(auto) operator[](size_type index) {
+			auto it = Base::begin();
+			std::advance(it, index);
+			return *it;
+		}
+
 };
 
 #endif /* SRC_INDEXABLESET_H_ */
