@@ -8,26 +8,26 @@
 #include <set>
 
 void indexableSet_subscript_operator_should_return_element_at_index() {
-	indexableSet<int> const cvalues{0, 1, 2, 3, 4, 5};
-	indexableSet<int> values{0, 1, 2, 3, 4, 5};
+	indexableSet<int> const cvalues{0, 5, 3, 4, 1, 2};
+	indexableSet<int> values{0, 5, 3, 4, 1, 2};
 	ASSERT_EQUAL(3, cvalues[3]);
 	ASSERT_EQUAL(3, values[3]);
 }
 
 void indexableSet_subscript_operator_should_return_element_at_negative_index() {
-	indexableSet<int> const cvalues{0, 1, 2, 3, 4, 5};
-	indexableSet<int> values{0, 1, 2, 3, 4, 5};
+	indexableSet<int> const cvalues{0, 5, 3, 4, 1, 2};
+	indexableSet<int> values{0, 5, 3, 4, 1, 2};
 	ASSERT_EQUAL(4, cvalues[-2]);
 	ASSERT_EQUAL(4, values[-2]);
 }
 
 void indexableSet_subscript_operator_should_throw_when_index_out_of_range() {
-	indexableSet<int> const values{0, 1, 2, 3, 4, 5};
+	indexableSet<int> const values{0, 5, 3, 4, 1, 2};
 	ASSERT_THROWS(values[15], std::out_of_range);
 }
 
 void indexableSet_subscript_operator_should_throw_when_negative_index_out_of_range() {
-	indexableSet<int> const values{0, 1, 2, 3, 4, 5};
+	indexableSet<int> const values{0, 5, 3, 4, 1, 2};
 	ASSERT_THROWS(values[-15], std::out_of_range);
 }
 
