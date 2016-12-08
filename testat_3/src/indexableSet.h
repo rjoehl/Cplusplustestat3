@@ -30,7 +30,12 @@ public:
 		std::advance(it, index);
 		return *it;
 	}
-
+	decltype(auto) front() {
+		if (Base::empty()) {
+			throw std::out_of_range("Set is empty.");
+		}
+		return *Base::begin();
+	}
 };
 
 #endif /* SRC_INDEXABLESET_H_ */
