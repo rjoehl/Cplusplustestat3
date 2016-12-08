@@ -36,6 +36,12 @@ public:
 		}
 		return *Base::begin();
 	}
+	decltype(auto) back() {
+		if (Base::empty()) {
+			throw std::out_of_range("Set is empty.");
+		}
+		return *(--Base::end());
+	}
 };
 
 #endif /* SRC_INDEXABLESET_H_ */

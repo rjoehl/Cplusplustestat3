@@ -46,6 +46,16 @@ void indexableSet_front_should_throw_when_empty() {
 	ASSERT_THROWS(values.front(), std::out_of_range);
 }
 
+void indexableSet_back_should_return_last_element() {
+	indexableSet<int> values{0, 5, 3, 4, 1, 2};
+	ASSERT_EQUAL(5, values.back());
+}
+
+void indexableSet_back_should_throw_when_empty() {
+	indexableSet<int> values{};
+	ASSERT_THROWS(values.back(), std::out_of_range);
+}
+
 struct caselessCompare {
 	bool operator()(std::string const &lhs, std::string const &rhs) {
 		return lexicographical_compare( begin(lhs), end(lhs), begin(rhs), end(rhs), [](auto ch1, auto ch2) {
@@ -70,6 +80,8 @@ bool runAllTests(int argc, char const *argv[]) {
 	s.push_back(CUTE(indexableSet_front_should_return_first_element));
 	s.push_back(CUTE(indexableSet_front_should_throw_when_empty));
 	s.push_back(CUTE(indexableSet_using_caseless_compare_functor));
+	s.push_back(CUTE(indexableSet_back_should_return_last_element));
+	s.push_back(CUTE(indexableSet_back_should_throw_when_empty));
 	//TODO add your test here
 	//s.push_back(CUTE(indexableSet_ctor_should_work_like_set));
 	cute::xml_file_opener xmlfile(argc, argv);

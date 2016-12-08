@@ -1,5 +1,5 @@
 <testsuites>
-	<testsuite name="AllTests" tests="7">
+	<testsuite name="AllTests" tests="9">
 		<testcase classname="AllTests" name="indexableSet_subscript_operator_should_return_element_at_index"/>
 		<testcase classname="AllTests" name="indexableSet_subscript_operator_should_return_element_at_negative_index"/>
 		<testcase classname="AllTests" name="indexableSet_subscript_operator_should_throw_when_index_out_of_range"/>
@@ -7,5 +7,7 @@
 		<testcase classname="AllTests" name="indexableSet_front_should_return_first_element"/>
 		<testcase classname="AllTests" name="indexableSet_front_should_throw_when_empty"/>
 		<testcase classname="AllTests" name="indexableSet_using_caseless_compare_functor"/>
+		<testcase classname="AllTests" name="indexableSet_back_should_return_last_element"/>
+		<testcase classname="AllTests" name="indexableSet_back_should_throw_when_empty"/>
 	</testsuite>
 </testsuites>
