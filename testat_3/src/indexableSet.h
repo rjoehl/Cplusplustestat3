@@ -40,7 +40,7 @@ public:
 		if (Base::empty()) {
 			throw std::out_of_range("Set is empty.");
 		}
-		return *(Base::rbegin());
+		return *Base::rbegin();
 	}
 };
 
