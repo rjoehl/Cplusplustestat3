@@ -16,10 +16,15 @@ public:
 	using size_type = typename Base::size_type;
 
 	T const & operator[](int index) const {
-		if ((size_type)std::abs(index) >= Base::size()) {
+		auto actualIndex = index >= 0 ? index : Base::size() + index;
+		if (actualIndex >= Base::size()) {
 			throw std::out_of_range("Absolute of index must be smaller than size.");
 		}
-		return *std::next(index >= 0 ? Base::cbegin() : Base::cend(), index);
+		return *std::next(Base::cbegin(), actualIndex);
+	}
+
+	T const & at(int index) const {
+		return operator[](index);
 	}
 
 	T const & front() const {
