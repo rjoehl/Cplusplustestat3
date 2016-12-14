@@ -13,16 +13,12 @@
 #include <vector>
 
 void indexableSet_subscript_operator_should_return_element_at_index() {
-	indexableSet<int> const cvalues{0, 5, 3, 4, 1, 2};
-	indexableSet<int> values{0, 5, 3, 4, 1, 2};
-	ASSERT_EQUAL(3, cvalues[3]);
+	indexableSet<int> const values{0, 5, 3, 4, 1, 2};
 	ASSERT_EQUAL(3, values[3]);
 }
 
 void indexableSet_subscript_operator_should_return_element_at_negative_index() {
-	indexableSet<int> const cvalues{0, 5, 3, 4, 1, 2};
-	indexableSet<int> values{0, 5, 3, 4, 1, 2};
-	ASSERT_EQUAL(4, cvalues[-2]);
+	indexableSet<int> const values{0, 5, 3, 4, 1, 2};
 	ASSERT_EQUAL(4, values[-2]);
 }
 
@@ -37,22 +33,22 @@ void indexableSet_subscript_operator_should_throw_when_negative_index_out_of_ran
 }
 
 void indexableSet_front_should_return_first_element() {
-	indexableSet<int> values{0, 5, 3, 4, 1, 2};
+	indexableSet<int> const values{0, 5, 3, 4, 1, 2};
 	ASSERT_EQUAL(0, values.front());
 }
 
 void indexableSet_front_should_throw_when_empty() {
-	indexableSet<int> values{};
+	indexableSet<int> const values{};
 	ASSERT_THROWS(values.front(), std::out_of_range);
 }
 
 void indexableSet_back_should_return_last_element() {
-	indexableSet<int> values{0, 5, 3, 4, 1, 2};
+	indexableSet<int> const values{0, 5, 3, 4, 1, 2};
 	ASSERT_EQUAL(5, values.back());
 }
 
 void indexableSet_back_should_throw_when_empty() {
-	indexableSet<int> values{};
+	indexableSet<int> const values{};
 	ASSERT_THROWS(values.back(), std::out_of_range);
 }
 
