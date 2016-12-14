@@ -19,9 +19,7 @@ public:
 		if ((size_type)std::abs(index) >= Base::size()) {
 			throw std::out_of_range("Absolute of index must be smaller than size.");
 		}
-		auto it = index >= 0 ? Base::cbegin() : Base::cend();
-		std::advance(it, index);
-		return *it;
+		return *std::next(index >= 0 ? Base::cbegin() : Base::cend(), index);
 	}
 
 	T const & front() const {
