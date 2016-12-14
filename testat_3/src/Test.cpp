@@ -78,8 +78,6 @@ bool runAllTests(int argc, char const *argv[]) {
 	s.push_back(CUTE(indexableSet_using_caseless_compare_functor));
 	s.push_back(CUTE(indexableSet_back_should_return_last_element));
 	s.push_back(CUTE(indexableSet_back_should_throw_when_empty));
-	//TODO add your test here
-	//s.push_back(CUTE(indexableSet_ctor_should_work_like_set));
 	cute::xml_file_opener xmlfile(argc, argv);
 	cute::xml_listener<cute::ide_listener<>> lis(xmlfile.out);
 	auto runner { cute::makeRunner(lis, argc, argv) };
