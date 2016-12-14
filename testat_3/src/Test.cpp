@@ -12,24 +12,28 @@
 #include <algorithm>
 #include <vector>
 
-void indexableSet_subscript_operator_should_return_element_at_index() {
+void indexableSet_index_access_should_return_element_at_index() {
 	indexableSet<int> const values{0, 5, 3, 4, 1, 2};
 	ASSERT_EQUAL(3, values[3]);
+	ASSERT_EQUAL(3, values.at(3));
 }
 
-void indexableSet_subscript_operator_should_return_element_at_negative_index() {
+void indexableSet_index_access_should_return_element_at_negative_index() {
 	indexableSet<int> const values{0, 5, 3, 4, 1, 2};
 	ASSERT_EQUAL(4, values[-2]);
+	ASSERT_EQUAL(4, values.at(-2));
 }
 
-void indexableSet_subscript_operator_should_throw_when_index_out_of_range() {
+void indexableSet_index_access_should_throw_when_index_out_of_range() {
 	indexableSet<int> const values{0, 5, 3, 4, 1, 2};
 	ASSERT_THROWS(values[15], std::out_of_range);
+	ASSERT_THROWS(values.at(15), std::out_of_range);
 }
 
-void indexableSet_subscript_operator_should_throw_when_negative_index_out_of_range() {
+void indexableSet_index_access_should_throw_when_negative_index_out_of_range() {
 	indexableSet<int> const values{0, 5, 3, 4, 1, 2};
 	ASSERT_THROWS(values[-15], std::out_of_range);
+	ASSERT_THROWS(values.at(-15), std::out_of_range);
 }
 
 void indexableSet_front_should_return_first_element() {
@@ -69,10 +73,10 @@ void indexableSet_using_caseless_compare_functor() {
 
 bool runAllTests(int argc, char const *argv[]) {
 	cute::suite s { };
-	s.push_back(CUTE(indexableSet_subscript_operator_should_return_element_at_index));
-	s.push_back(CUTE(indexableSet_subscript_operator_should_return_element_at_negative_index));
-	s.push_back(CUTE(indexableSet_subscript_operator_should_throw_when_index_out_of_range));
-	s.push_back(CUTE(indexableSet_subscript_operator_should_throw_when_negative_index_out_of_range));
+	s.push_back(CUTE(indexableSet_index_access_should_return_element_at_index));
+	s.push_back(CUTE(indexableSet_index_access_should_return_element_at_negative_index));
+	s.push_back(CUTE(indexableSet_index_access_should_throw_when_index_out_of_range));
+	s.push_back(CUTE(indexableSet_index_access_should_throw_when_negative_index_out_of_range));
 	s.push_back(CUTE(indexableSet_front_should_return_first_element));
 	s.push_back(CUTE(indexableSet_front_should_throw_when_empty));
 	s.push_back(CUTE(indexableSet_using_caseless_compare_functor));
